@@ -1,0 +1,44 @@
+{
+  "name": "@ae/db",
+  "type": "module",
+  "private": true,
+  "version": "0.0.1",
+  "author": "Jan Jankowski <dwuj4n@gmail.com>",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "lint": "eslint ./src",
+    "test": "vitest",
+    "check-types": "tsc --noEmit",
+    "generate": "drizzle-kit generate",
+    "migrate": "tsx src/migrate.ts",
+    "studio": "drizzle-kit studio"
+  },
+  "devDependencies": {
+    "@ae/eslint-config": "*",
+    "@ae/typescript-config": "*",
+    "@types/node": "^25.0.3",
+    "@types/pg": "^8.16.0",
+    "bumpp": "^10.3.2",
+    "drizzle-kit": "^0.31.8",
+    "tsdown": "^0.18.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "drizzle-orm": "^0.45.1",
+    "pg": "^8.18.0"
+  }
+}
