@@ -27,7 +27,7 @@ export const userTable = table("user", {
 });
 
 export const userRelations = relations(userTable, ({ many }) => ({
-  posts: many(requestTable),
+  requests: many(requestTable),
 }));
 
 export const cityTable = table("city", {
@@ -38,7 +38,8 @@ export const cityTable = table("city", {
 });
 
 export const cityRelations = relations(cityTable, ({ many }) => ({
-  posts: many(requestTable),
+  requestsTo: many(requestTable),
+  requestsFrom: many(requestTable),
 }));
 
 export const requestTable = table("request", {

@@ -1,11 +1,11 @@
 {
   "extends": ["//"],
   "tasks": {
-    "dev": {
-        "dependsOn": ["migrate"]
+    "generate-db": {},
+    "migrate": {
+        "cache": false,
+        "persistent": false
     },
-    "generate": {},
-    "migrate": {},
     "studio": {}
   }
 }
