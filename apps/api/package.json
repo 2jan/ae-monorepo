@@ -1,0 +1,21 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "echo 'Add build script here'",
+    "test": "echo 'Add test script here'",
+    "lint": "echo 'Add lint script here'"
+  },
+  "dependencies": {
+    "@ae/db": "*",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@ae/eslint-config": "*",
+    "@ae/typescript-config": "*",
+    "@types/express": "^5.0.6",
+    "tsdown": "^0.18.1"
+  }
+}

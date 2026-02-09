@@ -1,0 +1,1 @@
+ALTER TABLE "request" ALTER COLUMN "cityToId" SET NOT NULL;

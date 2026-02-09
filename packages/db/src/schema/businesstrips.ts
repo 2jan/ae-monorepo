@@ -38,7 +38,7 @@ export const cityTable = table("city", {
 });
 
 export const cityRelations = relations(cityTable, ({ many }) => ({
-  requestsTo: many(requestTable),
+//   requestsTo: many(requestTable),
   requestsFrom: many(requestTable),
 }));
 
@@ -54,7 +54,8 @@ export const requestTable = table("request", {
     .notNull(),
   cityToId: t
     .integer()
-    .references((): AnyPgColumn => cityTable.id),
+    .references((): AnyPgColumn => cityTable.id)
+    .notNull(),
   dateFrom: t.date(),
   dateTo: t.date(),
   status: requestStatusEnum().default("draft"),
@@ -69,8 +70,8 @@ export const requestRelations = relations(requestTable, ({ one }) => ({
         fields: [requestTable.cityFromId],
         references: [cityTable.id],
     }),
-    cityTo: one(cityTable, {
-        fields: [requestTable.cityToId],
-        references: [cityTable.id],
-    }),
+    // cityTo: one(cityTable, {
+    //     fields: [requestTable.cityToId],
+    //     references: [cityTable.id],
+    // }),
 }));
