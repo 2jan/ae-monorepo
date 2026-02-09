@@ -1,0 +1,221 @@
+{
+  "id": "3b2f7c77-7e03-42ef-afc9-5c0f97e1534f",
+  "prevId": "3a9aed6d-e113-483f-bc8e-993ea06a7849",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.city": {
+      "name": "city",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "voivodeship": {
+          "name": "voivodeship",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.request": {
+      "name": "request",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "beneficiaryId": {
+          "name": "beneficiaryId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cityFromId": {
+          "name": "cityFromId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cityToId": {
+          "name": "cityToId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dateFrom": {
+          "name": "dateFrom",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dateTo": {
+          "name": "dateTo",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "request_statuses",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'draft'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "request_beneficiaryId_user_id_fk": {
+          "name": "request_beneficiaryId_user_id_fk",
+          "tableFrom": "request",
+          "columnsFrom": [
+            "beneficiaryId"
+          ],
+          "tableTo": "user",
+          "columnsTo": [
+            "id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "no action"
+        },
+        "request_cityFromId_city_id_fk": {
+          "name": "request_cityFromId_city_id_fk",
+          "tableFrom": "request",
+          "columnsFrom": [
+            "cityFromId"
+          ],
+          "tableTo": "city",
+          "columnsTo": [
+            "id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "no action"
+        },
+        "request_cityToId_city_id_fk": {
+          "name": "request_cityToId_city_id_fk",
+          "tableFrom": "request",
+          "columnsFrom": [
+            "cityToId"
+          ],
+          "tableTo": "city",
+          "columnsTo": [
+            "id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.user": {
+      "name": "user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "user_email_unique": {
+          "name": "user_email_unique",
+          "columns": [
+            "email"
+          ],
+          "nullsNotDistinct": false
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.request_statuses": {
+      "name": "request_statuses",
+      "schema": "public",
+      "values": [
+        "draft",
+        "toApprove",
+        "cancelled",
+        "approved",
+        "rejected",
+        "toCompleting",
+        "completed",
+        "inProgress"
+      ]
+    }
+  },
+  "schemas": {},
+  "views": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

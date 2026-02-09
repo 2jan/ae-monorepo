@@ -1,3 +1,5 @@
-export function fn() {
-  return 'Hello, tsdown!'
-}
+// Export configuration
+export * from "./config";
+
+// Export schema
+export * from "./schema/businesstrips";

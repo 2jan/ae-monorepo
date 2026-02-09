@@ -20,7 +20,6 @@ const pool = new Pool({
 
 export const db = drizzle({
     client: pool,
-    casing: "snake_case",
 });
 
 export async function runMigrations() {
